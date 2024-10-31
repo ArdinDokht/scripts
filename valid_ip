@@ -1,0 +1,17 @@
+#!/bin/bash
+
+read -p "please enter a valid ip: " VAR1
+
+PAT='\b((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\.|$)){4}\b'
+
+if [[ $VAR1 =~ $PAT ]]; then
+        echo "its valid ip"
+        ping -c 2 $VAR1 >> /dev/null
+        if [[ $? == 0 ]];then
+                echo "SUCCESS"
+        else
+                echo "FAILD"
+        fi
+else
+        echo "not valid ip"
+fi
